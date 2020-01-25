@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   dartz: ^0.8.9
-
+  equatable: ^1.0.3
 
 dev_dependencies:
   flutter_test:

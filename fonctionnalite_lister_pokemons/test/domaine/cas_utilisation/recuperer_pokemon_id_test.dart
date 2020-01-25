@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fonctionnalite_lister_pokemons/domaine/cas_utilisation/recuperer_pokemon_id.dart';
-import 'package:fonctionnalite_lister_pokemons/domaine/entites/Pokemon.dart';
+import 'package:fonctionnalite_lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:mockito/mockito.dart';
 
 import '../depot/simulacre_depot_pokemon.dart';
@@ -12,12 +12,12 @@ void main() {
   int id = 1;
   Pokemon pokemon = Pokemon(
       id: id,
-      order: 1,
+      ordre: 1,
       baseExperience: 64,
-      name: "Bulbizarre",
-      weight: 69,
-      height: 7,
-      isDefault: true);
+      nom: "Bulbizarre",
+      poids: 69,
+      taille: 7,
+      estParDefaut: true);
 
   setUp(() {
     simulacreDepotPokemon = SimulacreDepotPokemon();

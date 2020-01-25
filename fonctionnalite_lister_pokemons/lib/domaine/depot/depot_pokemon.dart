@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:fonctionnalite_lister_pokemons/domaine/entites/Pokemon.dart';
+import 'package:fonctionnalite_lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:fonctionnalite_lister_pokemons/erreur.dart';
 
 abstract class DepotPokemon {
