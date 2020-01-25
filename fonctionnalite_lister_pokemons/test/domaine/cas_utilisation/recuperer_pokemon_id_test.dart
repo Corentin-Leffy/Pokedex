@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fonctionnalite_lister_pokemons/domaine/cas_utilisation/lister_pokemons.dart';
+import 'package:fonctionnalite_lister_pokemons/domaine/cas_utilisation/recuperer_pokemon_id.dart';
 import 'package:fonctionnalite_lister_pokemons/domaine/entites/Pokemon.dart';
 import 'package:mockito/mockito.dart';
 
 import '../depot/simulacre_depot_pokemon.dart';
 
 void main() {
-  ListerPokemons listerPokemons;
+  RecupererPokemonViaId recupererPokemonViaId;
   SimulacreDepotPokemon simulacreDepotPokemon;
   int id = 1;
   Pokemon pokemon = Pokemon(
@@ -21,14 +21,15 @@ void main() {
 
   setUp(() {
     simulacreDepotPokemon = SimulacreDepotPokemon();
-    listerPokemons = ListerPokemons(simulacreDepotPokemon);
+    recupererPokemonViaId = RecupererPokemonViaId(simulacreDepotPokemon);
   });
 
-  test("Doit retourner un Pokémon depuis le dépôt", () async {
+  test("Doit retourner un Pokémon depuis le dépôt grâce à son identifiant",
+      () async {
     when(simulacreDepotPokemon.recupererPokemon(any))
         .thenAnswer((_) async => Right(pokemon));
 
-    final resultat = await listerPokemons.execute(id: id);
+    final resultat = await recupererPokemonViaId(Parametres(id: id));
 
     expect(resultat, equals(Right(pokemon)));
     verify(simulacreDepotPokemon.recupererPokemon(id));
