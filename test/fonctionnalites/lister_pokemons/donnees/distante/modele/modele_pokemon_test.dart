@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fonctionnalite_lister_pokemons/domaine/entites/pokemon.dart';
-import 'package:fonctionnalite_lister_pokemons/donnees/distante/modele/modele_pokemon.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/modele_pokemon.dart';
 
-import '../../../fixtures.dart';
+import '../../../../../fixtures.dart';
 
 void main() {
   final modelePokemon = ModelePokemon(
@@ -31,14 +31,15 @@ void main() {
       expect(resultat, equals(modelePokemon));
     });
 
-    test("Doit retourner un modèle valide à partir d'un JSON composé de doubles",
-            () async {
-          final Map<String, dynamic> response =
+    test(
+        "Doit retourner un modèle valide à partir d'un JSON composé de doubles",
+        () async {
+      final Map<String, dynamic> response =
           json.decode(fixture("reponse_avec_double.json"));
 
-          final resultat = ModelePokemon.aPartirDeJson(response);
+      final resultat = ModelePokemon.aPartirDeJson(response);
 
-          expect(resultat, equals(modelePokemon));
-        });
+      expect(resultat, equals(modelePokemon));
+    });
   });
 }

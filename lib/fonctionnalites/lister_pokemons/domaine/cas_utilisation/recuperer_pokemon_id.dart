@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:fonctionnalite_lister_pokemons/cas_utilisation.dart';
 import 'package:meta/meta.dart';
-
-import '../../erreur.dart';
-import '../depot/depot_pokemon.dart';
-import '../entites/pokemon.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/depot/depot_pokemons.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
+import 'package:pokedex/socle/cas_utilisation.dart';
+import 'package:pokedex/socle/erreur.dart';
 
 class RecupererPokemonViaId extends CasUtilisation<Pokemon, Parametres> {
-  final DepotPokemon depotPokemon;
+  final DepotPokemons depotPokemon;
 
   RecupererPokemonViaId(this.depotPokemon);
 

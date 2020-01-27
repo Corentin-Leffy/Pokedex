@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fonctionnalite_lister_pokemons/domaine/cas_utilisation/recuperer_pokemon_id.dart';
-import 'package:fonctionnalite_lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/cas_utilisation/recuperer_pokemon_id.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 
 import '../depot/simulacre_depot_pokemon.dart';
 
