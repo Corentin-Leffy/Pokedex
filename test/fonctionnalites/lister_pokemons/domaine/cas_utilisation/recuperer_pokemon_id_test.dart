@@ -26,13 +26,13 @@ void main() {
 
   test("Doit retourner un Pokémon depuis le dépôt grâce à son identifiant",
       () async {
-    when(simulacreDepotPokemon.recupererPokemon(any))
+    when(simulacreDepotPokemon.recuperePokemonVia(id: anyNamed("id")))
         .thenAnswer((_) async => Right(pokemon));
 
-    final resultat = await recupererPokemonViaId(Parametres(id: id));
+    final resultat = await recupererPokemonViaId(Parametre(id: id));
 
     expect(resultat, equals(Right(pokemon)));
-    verify(simulacreDepotPokemon.recupererPokemon(id));
+    verify(simulacreDepotPokemon.recuperePokemonVia(id: id));
     verifyNoMoreInteractions(simulacreDepotPokemon);
   });
 }
