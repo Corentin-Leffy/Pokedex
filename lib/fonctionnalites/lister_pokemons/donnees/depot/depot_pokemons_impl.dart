@@ -21,7 +21,7 @@ class DepotPokemonsImpl implements DepotPokemons {
           {@required int id}) async =>
       await informationsReseauInternet.aInternet
           ? await _recuperePokemonDepuisSourceDistante(id)
-          : await _recuperePokemonDepuisSourceLocale();
+          : await _recuperePokemonDepuisSourceLocale(id);
 
   Future<Either<Erreur, Pokemon>> _recuperePokemonDepuisSourceDistante(
       int id) async {
@@ -34,9 +34,9 @@ class DepotPokemonsImpl implements DepotPokemons {
     }
   }
 
-  Future<Either<Erreur, Pokemon>> _recuperePokemonDepuisSourceLocale() async {
+  Future<Either<Erreur, Pokemon>> _recuperePokemonDepuisSourceLocale(int id) async {
     try {
-      final pokemon = await sourceLocalePokemons.recupereDernierPokemon();
+      final pokemon = await sourceLocalePokemons.recuperePokemonVia(id: id);
       return Right(pokemon);
     } on ExceptionLocale {
       return Left(ErreurLocale());

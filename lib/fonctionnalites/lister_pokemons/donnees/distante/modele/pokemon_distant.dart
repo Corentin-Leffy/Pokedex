@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 
-class ModelePokemon extends Pokemon {
-  ModelePokemon(
+class PokemonDistant extends Pokemon {
+  PokemonDistant(
       {@required id,
       @required nom,
       @required baseExperience,
@@ -19,8 +19,8 @@ class ModelePokemon extends Pokemon {
             ordre: ordre,
             poids: poids);
 
-  factory ModelePokemon.aPartirDeJson(Map<String, dynamic> json) =>
-      ModelePokemon(
+  factory PokemonDistant.aPartirDeJson(Map<String, dynamic> json) =>
+      PokemonDistant(
         id: json["id"],
         nom: json["name"],
         ordre: json["order"],

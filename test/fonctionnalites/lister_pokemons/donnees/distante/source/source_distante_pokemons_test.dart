@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/modele_pokemon.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/source/source_distante_pokemons.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/source/source_distante_pokemons_impl.dart';
 import 'package:pokedex/socle/erreur/exception.dart';
@@ -43,7 +43,7 @@ void main() {
 
     test("Récupère le pokémon quand le code HTTP répondu est 200", () async {
       final pokemon =
-          ModelePokemon.aPartirDeJson(json.decode(fixture("pokemon.json")));
+          PokemonDistant.aPartirDeJson(json.decode(fixture("pokemon.json")));
 
       initialiseReponseServeur(code: 200, corps: fixture("pokemon.json"));
 

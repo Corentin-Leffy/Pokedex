@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
-import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/modele_pokemon.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
 
 import '../../../../../fixtures.dart';
 
 void main() {
-  final modelePokemon = ModelePokemon(
+  final pokemonDistant = PokemonDistant(
       id: 1,
       ordre: 1,
       baseExperience: 0,
@@ -17,7 +17,7 @@ void main() {
       estParDefaut: true);
 
   test("Doit être une sous-classe de Pokémon", () async {
-    expect(modelePokemon, isA<Pokemon>());
+    expect(pokemonDistant, isA<Pokemon>());
   });
 
   group("À partir de JSON", () {
@@ -26,9 +26,9 @@ void main() {
       final Map<String, dynamic> response =
           json.decode(fixture("reponse.json"));
 
-      final resultat = ModelePokemon.aPartirDeJson(response);
+      final resultat = PokemonDistant.aPartirDeJson(response);
 
-      expect(resultat, equals(modelePokemon));
+      expect(resultat, equals(pokemonDistant));
     });
 
     test(
@@ -37,9 +37,9 @@ void main() {
       final Map<String, dynamic> response =
           json.decode(fixture("reponse_avec_double.json"));
 
-      final resultat = ModelePokemon.aPartirDeJson(response);
+      final resultat = PokemonDistant.aPartirDeJson(response);
 
-      expect(resultat, equals(modelePokemon));
+      expect(resultat, equals(pokemonDistant));
     });
   });
 }
