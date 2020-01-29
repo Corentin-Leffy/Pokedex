@@ -1,15 +1,11 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class BaseDeDonnees {
-  static const VERSION = 1;
-  static const NOM = 'pokemons.db';
+const VERSION = 1;
+const NOM = 'pokemons.db';
 
-  Database baseDeDonnees;
-
-  Future ouvrir() async {
-    baseDeDonnees = await openDatabase(
-      join(await getDatabasesPath(), BaseDeDonnees.NOM),
+Future<Database> ouvrirBaseDeDonnees() async => openDatabase(
+      join(await getDatabasesPath(), NOM),
       onCreate: (baseDeDonnees, version) async {
         await baseDeDonnees.execute(
           "CREATE TABLE pokemons("
@@ -23,9 +19,5 @@ class BaseDeDonnees {
           ")",
         );
       },
-      version: BaseDeDonnees.VERSION,
+      version: VERSION,
     );
-  }
-
-  Future fermer() async => baseDeDonnees.close();
-}

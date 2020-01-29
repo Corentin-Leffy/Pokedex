@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 
-class PokemonDistant extends Pokemon {
-  PokemonDistant(
+class PokemonLocal extends Pokemon {
+  PokemonLocal(
       {@required id,
       @required nom,
       @required baseExperience,
@@ -19,26 +19,15 @@ class PokemonDistant extends Pokemon {
             ordre: ordre,
             poids: poids);
 
-  factory PokemonDistant.aPartirDeJson(Map<String, dynamic> json) =>
-      PokemonDistant(
+  factory PokemonLocal.aPartirDeJson(Map<String, dynamic> json) => PokemonLocal(
         id: json["id"],
         nom: json["name"],
         ordre: json["order"],
-        estParDefaut: json["is_default"],
+        estParDefaut: json["is_default"] == 1 || json["is_default"],
         poids: (json["weight"] as num).toInt(),
         taille: (json["height"] as num).toInt(),
         baseExperience: (json["base_experience"] as num).toInt(),
       );
-
-  Map<String, dynamic> enJson() => {
-        'base_experience': baseExperience,
-        'height': taille,
-        'id': id,
-        'is_default': estParDefaut,
-        'name': nom,
-        'order': ordre,
-        'weight': poids
-      };
 
   @override
   String toString() => "[${super.props.join(",")}]";
