@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/source/source_distante_pokemons.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/source/source_distante_pokemons_impl.dart';
@@ -28,15 +29,15 @@ void main() {
   }
 
   group("Récupère un pokémon depuis la source distante", () {
-    final pokemonId = 1;
+    final id = Id(1);
 
     test("Requête via une méthode GET une URL avec l'ID du pokémon", () {
       initialiseReponseServeur(code: 200, corps: fixture("pokemon.json"));
 
-      sourceDistantePokemons.recuperePokemonVia(id: pokemonId);
+      sourceDistantePokemons.recuperePokemonVia(id: id);
 
       verify(httpClient.get(
-        "https://pokeapi.co/api/v2/pokemon/$pokemonId/",
+        "https://pokeapi.co/api/v2/pokemon/${id.value}/",
         headers: {'Content-Type': 'application/json'},
       ));
     });
@@ -47,8 +48,7 @@ void main() {
 
       initialiseReponseServeur(code: 200, corps: fixture("pokemon.json"));
 
-      final resultat =
-          await sourceDistantePokemons.recuperePokemonVia(id: pokemonId);
+      final resultat = await sourceDistantePokemons.recuperePokemonVia(id: id);
 
       expect(resultat, equals(pokemon));
     });
@@ -60,7 +60,7 @@ void main() {
 
       final invocation = sourceDistantePokemons.recuperePokemonVia;
 
-      expect(() => invocation(id: pokemonId), throwsA(isA<ExceptionServeur>()));
+      expect(() => invocation(id: id), throwsA(isA<ExceptionServeur>()));
     });
 
     test(
@@ -70,7 +70,7 @@ void main() {
 
       final invocation = sourceDistantePokemons.recuperePokemonVia;
 
-      expect(() => invocation(id: pokemonId), throwsA(isA<ExceptionServeur>()));
+      expect(() => invocation(id: id), throwsA(isA<ExceptionServeur>()));
     });
   });
 }

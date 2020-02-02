@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 
 class Pokemon extends Equatable {
-  final int id;
+  final Id id;
   final String nom;
   final int baseExperience;
   final int taille;

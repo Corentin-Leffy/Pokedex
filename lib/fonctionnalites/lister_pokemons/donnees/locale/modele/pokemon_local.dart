@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 
 class PokemonLocal extends Pokemon {
@@ -20,7 +21,7 @@ class PokemonLocal extends Pokemon {
             poids: poids);
 
   factory PokemonLocal.aPartirDeJson(Map<String, dynamic> json) => PokemonLocal(
-        id: json["id"],
+        id: Id.aPartirDe(json: json),
         nom: json["name"],
         ordre: json["order"],
         estParDefaut: json["is_default"] == 1 || json["is_default"],

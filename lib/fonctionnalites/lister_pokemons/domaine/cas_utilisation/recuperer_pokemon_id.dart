@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/depot/depot_pokemons.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:pokedex/socle/cas_utilisation.dart';
 import 'package:pokedex/socle/erreur/erreur.dart';
@@ -15,7 +16,7 @@ class RecupererPokemonViaId extends CasUtilisation<Pokemon, Parametre> {
 }
 
 class Parametre {
-  final int id;
+  final Id id;
 
   Parametre({@required this.id});
 }

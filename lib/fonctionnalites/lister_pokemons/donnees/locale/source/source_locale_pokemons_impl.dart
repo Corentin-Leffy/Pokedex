@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/modele/pokemon_local.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/source/source_locale_pokemons.dart';
@@ -13,9 +14,9 @@ class SourceLocalePokemonImpl implements SourceLocalePokemon {
   static const NOM_TABLE = "pokemons";
 
   @override
-  Future<PokemonLocal> recuperePokemonVia({@required int id}) async {
-    final lignes =
-        await baseDeDonnees.query(NOM_TABLE, where: "id = ?", whereArgs: [id]);
+  Future<PokemonLocal> recuperePokemonVia({@required Id id}) async {
+    final lignes = await baseDeDonnees
+        .query(NOM_TABLE, where: "id = ?", whereArgs: [id.value]);
     baseDeDonnees.close();
 
     final ligne = lignes.firstWhere(

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/depot/depot_pokemons.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/source/source_distante_pokemons.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/source/source_locale_pokemons.dart';
@@ -18,13 +19,13 @@ class DepotPokemonsImpl implements DepotPokemons {
 
   @override
   Future<Either<Erreur, Pokemon>> recuperePokemonVia(
-          {@required int id}) async =>
+          {@required Id id}) async =>
       await informationsReseauInternet.aInternet
           ? await _recuperePokemonDepuisSourceDistante(id)
           : await _recuperePokemonDepuisSourceLocale(id);
 
   Future<Either<Erreur, Pokemon>> _recuperePokemonDepuisSourceDistante(
-      int id) async {
+      Id id) async {
     try {
       final pokemon = await sourceDistantePokemons.recuperePokemonVia(id: id);
       sourceLocalePokemons.sauvegardePokemon(pokemon);
@@ -34,7 +35,7 @@ class DepotPokemonsImpl implements DepotPokemons {
     }
   }
 
-  Future<Either<Erreur, Pokemon>> _recuperePokemonDepuisSourceLocale(int id) async {
+  Future<Either<Erreur, Pokemon>> _recuperePokemonDepuisSourceLocale(Id id) async {
     try {
       final pokemon = await sourceLocalePokemons.recuperePokemonVia(id: id);
       return Right(pokemon);

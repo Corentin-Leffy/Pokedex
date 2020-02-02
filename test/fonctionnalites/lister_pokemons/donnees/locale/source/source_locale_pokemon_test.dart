@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/modele/pokemon_local.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/source/source_locale_pokemons.dart';
@@ -22,7 +23,7 @@ void main() {
   });
 
   group("Depuis la source locale", () {
-    final pokemonId = 1;
+    final id = Id(1);
     final pokemonLocal = PokemonLocal.aPartirDeJson(pokemonEnJson());
     final pokemonDistant = PokemonDistant.aPartirDeJson(pokemonEnJson());
 
@@ -31,11 +32,10 @@ void main() {
               where: anyNamed("where"), whereArgs: anyNamed("whereArgs")))
           .thenAnswer((_) async => [pokemonEnJson()]);
 
-      final resultat =
-          await sourceLocalePokemon.recuperePokemonVia(id: pokemonId);
+      final resultat = await sourceLocalePokemon.recuperePokemonVia(id: id);
 
       verify(baseDeDonnees
-          .query("pokemons", where: "id = ?", whereArgs: [pokemonId]));
+          .query("pokemons", where: "id = ?", whereArgs: [id.value]));
       expect(resultat, equals(pokemonLocal));
     });
 
@@ -46,7 +46,7 @@ void main() {
 
       final invocation = sourceLocalePokemon.recuperePokemonVia;
 
-      expect(() => invocation(id: pokemonId),
+      expect(() => invocation(id: id),
           throwsA(isA<AucuneDonneeLocaleException>()));
     });
 

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/depot/depot_pokemons.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/depot/depot_pokemons_impl.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/modele/pokemon_local.dart';
@@ -26,7 +27,7 @@ void main() {
         sourceLocalePokemons, informationsReseauInternet);
   });
 
-  int id = 1;
+  Id id = Id(1);
   PokemonDistant pokemonDistant = PokemonDistant(
       id: id,
       ordre: 1,
