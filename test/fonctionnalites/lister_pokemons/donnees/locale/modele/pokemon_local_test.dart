@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/base_experience.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/locale/modele/pokemon_local.dart';
@@ -11,7 +12,7 @@ void main() {
   final pokemonLocal = PokemonLocal(
       id: Id(1),
       ordre: 1,
-      baseExperience: 0,
+      baseExperience: BaseExperience(0),
       nom: "Test",
       poids: 100,
       taille: 1,

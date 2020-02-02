@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/base_experience.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 
@@ -27,7 +28,7 @@ class PokemonLocal extends Pokemon {
         estParDefaut: json["is_default"] == 1 || json["is_default"],
         poids: (json["weight"] as num).toInt(),
         taille: (json["height"] as num).toInt(),
-        baseExperience: (json["base_experience"] as num).toInt(),
+        baseExperience: BaseExperience.aPartirDe(json: json),
       );
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/base_experience.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/donnees/distante/modele/pokemon_distant.dart';
@@ -11,7 +12,7 @@ void main() {
   final pokemonDistant = PokemonDistant(
       id: Id(1),
       ordre: 1,
-      baseExperience: 0,
+      baseExperience: BaseExperience(0),
       nom: "Test",
       poids: 100,
       taille: 1,
@@ -46,7 +47,7 @@ void main() {
   group("En JSON", () {
     final pokemonDistant = PokemonDistant(
       id: Id(1),
-      baseExperience: 0,
+      baseExperience: BaseExperience(0),
       estParDefaut: true,
       nom: "Test",
       ordre: 1,

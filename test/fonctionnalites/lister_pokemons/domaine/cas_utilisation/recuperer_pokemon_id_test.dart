@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/cas_utilisation/recuperer_pokemon_id.dart';
+import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/base_experience.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/id.dart';
 import 'package:pokedex/fonctionnalites/lister_pokemons/domaine/entites/pokemon.dart';
 
@@ -14,7 +15,7 @@ void main() {
   Pokemon pokemon = Pokemon(
       id: id,
       ordre: 1,
-      baseExperience: 64,
+      baseExperience: BaseExperience(64),
       nom: "Bulbizarre",
       poids: 69,
       taille: 7,
